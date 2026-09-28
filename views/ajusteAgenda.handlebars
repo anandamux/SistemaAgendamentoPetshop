@@ -1,0 +1,54 @@
+﻿<div class="admin-menu">
+  <a href="/listaPetAgenda" class="btn-tab"><i class="fa-solid fa-list"></i>
+    Ver Agendamentos</a>
+  <a href="/ajustaPetAgenda" class="btn-tab ativo"><i
+      class="fa-solid fa-gear"
+    ></i>
+    Configurar Capacidade</a>
+</div>
+<div class="card-agenda">
+  <div class="card-header" style="justify-content: center; display: flex;">
+    <h2><i class="fa-solid fa-sliders"></i> Definir Vagas por Horário</h2>
+  </div>
+
+  <form method="POST" action="/ajustaPetAgenda" class="form-admin">
+    <label>Dia da Semana:
+      <select name="dia" required>
+        <option value="" disabled selected>Selecione o dia...</option>
+        <option value="SEG">Segunda-feira (SEG)</option>
+        <option value="TER">Terça-feira (TER)</option>
+        <option value="QUA">Quarta-feira (QUA)</option>
+        <option value="QUI">Quinta-feira (QUI)</option>
+        <option value="SEX">Sexta-feira (SEX)</option>
+        <option value="SAB">Sábado (SAB)</option>
+      </select>
+    </label>
+
+    <label>Horário:
+      <select name="horario" required>
+        <option value="" disabled selected>Selecione o horário...</option>
+        <option value="08:00">08:00</option>
+        <option value="09:00">09:00</option>
+        <option value="10:00">10:00</option>
+        <option value="11:00">11:00</option>
+        <option value="14:00">14:00</option>
+        <option value="15:00">15:00</option>
+        <option value="16:00">16:00</option>
+        <option value="17:00">17:00</option>
+      </select>
+    </label>
+
+    <label>Capacidade Simultânea (Nº de Funcionários):
+      <input type="number" name="capacidade" min="0" value="12" required />
+    </label>
+
+    <button
+      type="submit"
+      class="btn-agendar-preenchido"
+      style="margin-top: 20px;"
+    >
+      <i class="fa-solid fa-floppy-disk"></i>
+      Salvar Configuração
+    </button>
+  </form>
+</div>

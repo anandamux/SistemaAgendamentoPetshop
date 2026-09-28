@@ -1,0 +1,46 @@
+﻿<div class="admin-menu">
+  <a href="/listaPetAgenda" class="btn-tab ativo"><i
+      class="fa-solid fa-list"
+    ></i>
+    Ver Agendamentos</a>
+  <a href="/ajustaPetAgenda" class="btn-tab"><i class="fa-solid fa-gear"></i>
+    Configurar Capacidade</a>
+</div>
+
+<div class="card-agenda">
+  <div class="card-header">
+    <h2><i class="fa-solid fa-calendar-check"></i> Controle de Agendamentos</h2>
+  </div>
+
+  <table class="tabela-admin">
+    <thead>
+      <tr>
+        <th>Data/Dia</th>
+        <th>Horário</th>
+        <th>Cliente</th>
+        <th>CPF</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each listaAgendamentos}}
+        <tr>
+          <td style="font-weight: bold;">{{this.dia}}</td>
+          <td
+            style="color: var(--cor-destaque); font-weight: bold;"
+          >{{this.hora}}</td>
+          <td>{{this.nome}}
+            <br /><small style="color: #888;">Pet: {{this.pet}}</small></td>
+          <td>{{this.cpf}}</td>
+        </tr>
+      {{else}}
+        <!-- mensagem só aparece se o banco estiver vazio -->
+        <tr>
+          <td
+            colspan="4"
+            style="text-align: center; color: #888; padding: 30px;"
+          >Nenhum agendamento registado ainda.</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,426 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap");
+
+:root {
+  --cor-destaque: #e64a45;
+  --cor-fundo: #f4f1f1;
+  --texto-escuro: #4a4a4a;
+  --texto-claro: #8a8a8a;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--texto-escuro);
+  margin: 0;
+  background-image:
+    radial-gradient(
+      circle at top left,
+      var(--cor-destaque) 0%,
+      transparent 15%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      var(--cor-destaque) 0%,
+      transparent 20%
+    );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+}
+
+.navbar .logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--cor-destaque);
+}
+
+.menu-links a {
+  text-decoration: none;
+  color: var(--texto-escuro);
+  margin: 0 15px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.menu-links a.ativo {
+  color: var(--cor-destaque);
+  border-bottom: 2px solid var(--cor-destaque);
+  padding-bottom: 5px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Hero Section (Cão e Título) */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.hero-texto {
+  flex: 1;
+}
+
+.subtitulo {
+  color: var(--cor-destaque);
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.hero-texto h1 {
+  color: var(--cor-destaque);
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 10px 0 20px 0;
+}
+
+.hero-texto p {
+  color: var(--texto-claro);
+  font-size: 16px;
+}
+
+.hero-imagem img {
+  max-width: 400px;
+  border-radius: 20px;
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+/* Cartão da Agenda */
+.card-agenda {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.card-header h2 {
+  color: #333;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-header h2 i {
+  color: var(--cor-destaque);
+}
+
+/* Grade da Semana */
+.grade-semana {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.coluna-dia {
+  text-align: center;
+}
+
+.dia-titulo {
+  font-weight: 800;
+  color: var(--texto-escuro);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.horarios-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Botões */
+.btn-horario-outline {
+  background-color: transparent;
+  color: var(--cor-destaque);
+  border: 1px solid var(--cor-destaque);
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-horario-outline:hover {
+  background-color: var(--cor-destaque);
+  color: white;
+}
+
+/* Modal / Popup */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 700;
+  color: var(--texto-escuro);
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+.btn-agendar-preenchido {
+  background-color: var(--cor-destaque);
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-agendar-preenchido:hover {
+  background-color: #d13d39;
+}
+
+.fechar-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+}
+/* Botão da Área do Administrador na Navbar */
+.btn-admin-nav {
+  background-color: var(--texto-escuro);
+  color: white !important;
+  padding: 10px 20px !important;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-admin-nav:hover {
+  background-color: var(--cor-destaque);
+  color: white !important;
+  border-bottom: none !important;
+}
+
+/* Area do Admin */
+.admin-menu {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.btn-tab {
+  padding: 12px 25px;
+  background-color: white;
+  color: var(--texto-escuro);
+  border: 2px solid #eee;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-tab.ativo,
+.btn-tab:hover {
+  background-color: var(--cor-destaque);
+  color: white;
+  border-color: var(--cor-destaque);
+}
+
+/* Tabela */
+.tabela-admin {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.tabela-admin th {
+  background-color: var(--cor-destaque);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 700;
+}
+
+.tabela-admin td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  color: var(--texto-escuro);
+}
+
+/* Estilo base igual para Inputs e Selects */
+.form-admin input,
+.form-admin select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif; /* Força a nossa fonte bonita */
+  font-size: 15px;
+  color: var(--texto-escuro);
+}
+
+/*  Select estilizado */
+.form-admin select {
+  background-color: white;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234A4A4A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px top 50%;
+  background-size: 12px auto;
+  padding-right: 40px;
+}
+
+/* Estilo das opções de dentro da lista */
+.form-admin select option {
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+  color: var(--texto-escuro);
+  padding: 10px;
+}
+
+/* Efeito de foco  */
+.form-admin input:focus,
+.form-admin select:focus {
+  outline: none;
+  border-color: var(--cor-destaque);
+  box-shadow: 0 0 0 3px rgba(230, 74, 69, 0.1);
+}
+
+.form-admin label {
+  display: block;
+  margin-bottom: 25px;
+  font-weight: 700;
+  color: var(--texto-escuro);
+}
+
+/* Botão Esgotado/Indisponível */
+.btn-horario-esgotado {
+  background-color: #f0f0f0;
+  color: #b0b0b0;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: not-allowed;
+  font-weight: 700;
+  font-size: 14px;
+  opacity: 0.7;
+}
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  /* Navbar*/
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+  .menu-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .menu-links a {
+    margin: 0;
+  }
+
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .hero-texto h1 {
+    font-size: 32px;
+  }
+  .hero-imagem img {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  /* Grade da Semana: Transforma as colunas numa lista vertical */
+  .grade-semana {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .coluna-dia {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+  }
+
+  /* 5. Ajustes do Cartão de Agenda */
+  .card-agenda {
+    padding: 20px 15px;
+  }
+
+  /* 6. Tabela do Administrador */
+  .tabela-admin {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .admin-menu {
+    flex-direction: column;
+  }
+}

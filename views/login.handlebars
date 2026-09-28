@@ -1,0 +1,29 @@
+﻿<div class="card-agenda" style="max-width: 400px; margin: 50px auto;">
+  <div class="card-header" style="justify-content: center; display: flex;">
+    <h2><i class="fa-solid fa-lock"></i> Acesso Restrito</h2>
+  </div>
+
+  <form method="POST" action="/login" class="form-admin">
+    <label>Usuário:
+      <input
+        type="text"
+        name="usuario"
+        placeholder="Digite o usuário"
+        required
+      />
+    </label>
+
+    <label>Senha:
+      <input type="password" name="senha" placeholder="********" required />
+    </label>
+
+    <button
+      type="submit"
+      class="btn-agendar-preenchido"
+      style="margin-top: 20px;"
+    >
+      <i class="fa-solid fa-right-to-bracket"></i>
+      Entrar
+    </button>
+  </form>
+</div>

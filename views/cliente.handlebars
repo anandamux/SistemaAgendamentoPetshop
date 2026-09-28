@@ -1,0 +1,75 @@
+﻿<!-- Seção de Destaque -->
+<div class="hero">
+    <div class="hero-texto">
+        <span class="subtitulo">AGENDAMENTO</span>
+        <h1>ESCOLHA O MELHOR<br>HORÁRIO PARA SEU PET</h1>
+        <p>Cuide do seu pet com todo o carinho e praticidade.<br>Selecione o dia e o horário ideal para o seu atendimento.</p>
+    </div>
+    <div class="hero-imagem">
+        <img src="/img/cachorro.png" alt="Cachorro">    </div>
+</div>
+
+<div class="card-agenda">
+    <div class="card-header">
+        <h2><i class="fa-regular fa-calendar-days"></i> Escolha o dia</h2>
+    </div>
+
+    <div class="grade-semana">
+        {{#each semana}}
+        <div class="coluna-dia">
+            <div class="dia-titulo">{{this.dia}}</div>
+            <div class="horarios-lista">
+               {{#each this.horarios}}
+                    {{#if this.vagas}}
+                        <!-- Botão Ativo (Tem Vagas) -->
+                        <button class="btn-horario-outline" onclick="abrirModal('{{../dia}}', '{{this.hora}}', '{{this.id}}')">
+                            {{this.hora}} <br>
+                            <span style="font-size: 11px; font-weight: normal;">{{this.vagas}} vaga(s)</span>
+                        </button>
+                    {{else}}
+                        <!-- Botão Bloqueado (Vagas = 0) -->
+                        <button class="btn-horario-esgotado" disabled>
+                            {{this.hora}} <br>
+                            <span style="font-size: 11px; font-weight: normal;">Esgotado</span>
+                        </button>
+                    {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<div id="modalAgendamento" class="modal-overlay">
+    <div class="modal-content">
+        <span class="fechar-modal" onclick="fecharModal()">&times;</span>
+        <h2>Confirmar Agendamento</h2>
+        <p id="textoConfirmacao" style="color: var(--cor-destaque); font-weight: bold; margin-bottom: 20px;"></p>
+        
+        <form action="/agendar" method="POST">
+            <input type="hidden" name="dia" id="inputDia">
+            <input type="hidden" name="hora" id="inputHora">
+            <input type="hidden" name="horario_id" id="inputId">
+ 
+            <label>Seu Nome: <input type="text" name="nome" placeholder="Digite seu nome" required></label>
+            <label>CPF:
+                <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" maxlength="11" minlength="11" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+            </label>    
+            <label>Nome do Pet: <input type="text" name="pet" placeholder="Nome do bichinho" required></label>
+            <button type="submit" class="btn-agendar-preenchido" style="margin-top: 15px;">Confirmar Horário</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function abrirModal(dia, hora, id) {
+        document.getElementById('textoConfirmacao').innerText = `Pet Shop marcado para: ${dia} às ${hora}`;
+        document.getElementById('inputDia').value = dia;
+        document.getElementById('inputHora').value = hora;
+        document.getElementById('inputId').value = id;
+        document.getElementById('modalAgendamento').style.display = 'flex';
+    }
+    function fecharModal() {
+        document.getElementById('modalAgendamento').style.display = 'none';
+    }
+</script>
